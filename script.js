@@ -2,7 +2,7 @@
 let blackjackGame = {
     'you': {'scoreSpan': '#your-blackjack-result', 'div':'#your-box', 'score':0},
     'dealer':{'scoreSpan': '#dealer-blackjack-result','div': '#dealer-box', 'score':0},
-
+    'cards': ['2','3','4','5','6','7','8','9','10','K','Q','A'],
 };
 
 const YOU = blackjackGame['you']
@@ -11,23 +11,32 @@ const DEALER = blackjackGame['dealer']
 const hitSound = new Audio('sounds/swish.m4a');
 
 document.querySelector('#hit-button').addEventListener('click', blackjackHit);
+document.querySelector('#deal-button').addEventListener('click', blackjackDeal);
 
 function blackjackHit() {
-   showCard(YOU);
-   showCard(DEALER);
+    let card = randomCard();
+    console.log(card);
+    showCard(card, YOU);
 
 }
 
-function showCard(activePlayer){
+function randomCard(){
+    let randomIndex = Math.floor(Math.random()*13);
+    return blackjackGame['cards'][randomIndex];
+
+}
+
+function showCard(card,activePlayer){
     let cardImage = document.createElement('img');
-    cardImage.src = 'images/Q.png';
+    console.log(cardImage);
+    cardImage.src = `images/${card}.png`;
     document.querySelector(activePlayer['div']).appendChild(cardImage);
     hitSound.play();
 }
 
 function blackjackDeal(){
     let yourImages = document.querySelector('#your-box').querySelectorAll('img');
-    let dealerImages = document.querySelector('#dealer-box').querySelector('img');
+    let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
 
     for(i=0;i<yourImages.length;i++){
         yourImages[i].remove();
