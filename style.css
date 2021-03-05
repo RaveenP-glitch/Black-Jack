@@ -17,6 +17,14 @@
     border-bottom: 1px solid black;
 
 }
+
+#your-box, #dealer-box{
+    display:flex;
+    
+    justify-content: space-around;
+   
+}
+
 .flex-blackjack-row-3{
     display:flex;
     padding: 10px;
@@ -33,7 +41,14 @@
     padding: 10px;
     flex: 1;
     text-align: center;
-    height: 24rem;
+    height: 350px;
+
+}
+
+.flex-blackjack-row-1 img{
+    width: 15%;
+    padding: 10px;
+
 
 }
 
@@ -55,14 +70,4 @@ table,th,td{
     border: 1px solid black;
     padding:10px;
 
-}
-
-.flex-blackjack-row-2{
-    display:flex;
-    padding: 10px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    border-bottom: 1px solid black;
-    
 }
